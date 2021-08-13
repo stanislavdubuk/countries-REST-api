@@ -1,8 +1,11 @@
 import { SearchOutlined } from '@material-ui/icons';
+import { useAppSelector } from '../../redux/hooks';
 import Card from '../../components/card/Card';
 import './Home.scss';
 
 const Home = () => {
+  const countries = useAppSelector((state) => state.countries.countries);
+
   return (
     <div className='home'>
       <div className='wrapper'>
@@ -27,14 +30,9 @@ const Home = () => {
           </div>
         </div>
         <div className='home_bottom'>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {countries.map((country) => (
+            <Card key={Math.random()} name={country.name} />
+          ))}
         </div>
       </div>
     </div>

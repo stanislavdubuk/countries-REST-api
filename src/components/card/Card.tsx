@@ -1,6 +1,10 @@
 import './Card.scss';
 
-const Card = () => {
+interface Props {
+  name: string;
+}
+
+const Card: React.FC<Props> = ({ name }) => {
   return (
     <div className='card'>
       <div className='card_top'>
@@ -10,7 +14,7 @@ const Card = () => {
         />
       </div>
       <div className='card_bottom'>
-        <h3>United States of America</h3>
+        <h3>{name}</h3>
         <div>
           <span>Population:</span> 323,947,000
         </div>

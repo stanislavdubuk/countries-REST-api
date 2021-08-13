@@ -7,22 +7,18 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import axios from 'axios';
-import './App.scss';
+import { updateCountries } from './redux/apiCalls';
+import { useAppDispatch } from './redux/hooks';
 import { useEffect } from 'react';
 
+import './App.scss';
+
 const App = () => {
-  // useEffect(() => {
-  //   const getCountries = async () => {
-  //     try {
-  //       const res = await axios.get('https://restcountries.eu/rest/v2/all');
-  //       console.log(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getCountries();
-  // }, []);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    updateCountries(dispatch);
+  }, [dispatch]);
 
   return (
     <Router>
@@ -30,10 +26,10 @@ const App = () => {
         <Topbar />
         <Switch>
           <Route path='/' exact>
-            <Country />
+            <Home />
           </Route>
           <Route path='/country/:countryId'>
-            <Home />
+            <Country />
           </Route>
           <Route path='*'>
             <Redirect to='/' />
