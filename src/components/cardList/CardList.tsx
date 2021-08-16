@@ -16,8 +16,9 @@ const CardList = () => {
   const countriesSearched = useAppSelector(
     (state) => state.countries.countriesSearched
   );
-  const countries =
-    countriesSearched.length > 0 ? countriesSearched : countriesInitial;
+  const countries = countriesSearched.length
+    ? countriesSearched
+    : countriesInitial;
 
   return (
     <div className='home_bottom'>

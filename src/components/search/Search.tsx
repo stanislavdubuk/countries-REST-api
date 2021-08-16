@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { SearchOutlined } from '@material-ui/icons';
-// import { useAppSelector } from '../../redux/hooks';
 import { useAppDispatch } from '../../redux/hooks';
 import { search } from '../../redux/countriesSlice';
 

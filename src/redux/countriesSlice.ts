@@ -1,22 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+type countryType = {
+  numericCode: number;
+  flag: string;
+  name: string;
+  population: number;
+  region: string;
+  capital: string;
+}[];
+
 interface CountriesState {
-  countries: {
-    numericCode: number;
-    flag: string;
-    name: string;
-    population: number;
-    region: string;
-    capital: string;
-  }[];
-  countriesSearched: {
-    numericCode: number;
-    flag: string;
-    name: string;
-    population: number;
-    region: string;
-    capital: string;
-  }[];
+  countries: countryType;
+  countriesSearched: countryType;
+  countriesFiltered: countryType;
   pending: boolean;
   error: boolean;
 }
@@ -24,6 +20,7 @@ interface CountriesState {
 const initialState: CountriesState = {
   countries: [],
   countriesSearched: [],
+  countriesFiltered: [],
   pending: false,
   error: false,
 };
@@ -44,14 +41,27 @@ export const countriesSlice = createSlice({
       state.pending = false;
     },
     search: (state, action) => {
-      const searchItem = action.payload;
-      console.log(searchItem);
       state.countriesSearched = state.countries.filter((country) => {
-        if (action.payload === '') {
+        const query = country.name
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+
+        if (!action.payload) {
           return state.countries;
-        } else if (
-          country.name.toLowerCase().includes(action.payload.toLowerCase())
-        ) {
+        } else if (query) {
+          return country;
+        }
+      });
+    },
+    filter: (state, action) => {
+      state.countriesSearched = state.countries.filter((country) => {
+        const query = country.region
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+
+        if (!action.payload) {
+          return state.countries;
+        } else if (query) {
           return country;
         }
       });
@@ -59,7 +69,7 @@ export const countriesSlice = createSlice({
   },
 });
 
-export const { updateStart, updateSuccess, updateFailed, search } =
+export const { updateStart, updateSuccess, updateFailed, search, filter } =
   countriesSlice.actions;
 
 export default countriesSlice.reducer;
