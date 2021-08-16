@@ -7,22 +7,11 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { updateCountries } from './redux/apiCalls';
-import { useAppDispatch } from './redux/hooks';
-import { useEffect } from 'react';
-
-import './App.scss';
 
 const App = () => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    updateCountries(dispatch);
-  }, [dispatch]);
-
   return (
-    <Router>
-      <div className='App'>
+    <>
+      <Router>
         <Topbar />
         <Switch>
           <Route path='/' exact>
@@ -35,8 +24,8 @@ const App = () => {
             <Redirect to='/' />
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </>
   );
 };
 

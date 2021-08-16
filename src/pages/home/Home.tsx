@@ -1,39 +1,33 @@
-import { SearchOutlined } from '@material-ui/icons';
-import { useAppSelector } from '../../redux/hooks';
-import Card from '../../components/card/Card';
 import './Home.scss';
+import Search from '../../components/search/Search';
+import Filter from '../../components/filter/Filter';
+import Error from '../../components/errorMsg/Error';
+import CardList from '../../components/cardList/CardList';
+import { CircularProgress } from '@material-ui/core';
+import { useAppSelector } from '../../redux/hooks';
+import { updateCountries } from '../../redux/apiCalls';
+import { useAppDispatch } from '../../redux/hooks';
+import { useEffect } from 'react';
 
 const Home = () => {
-  const countries = useAppSelector((state) => state.countries.countries);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    updateCountries(dispatch);
+  }, [dispatch]);
+
+  const pending = useAppSelector((state) => state.countries.pending);
+  const error = useAppSelector((state) => state.countries.error);
 
   return (
     <div className='home'>
       <div className='wrapper'>
         <div className='home_top'>
-          <div className='input'>
-            <div className='search'>
-              <SearchOutlined className='icon' />
-              <input type='text' placeholder='Search for a country...' />
-            </div>
-          </div>
-          <div className='input'>
-            <div className='filter'>
-              <select name='country' id='country'>
-                <option value='all'>Filter By Region</option>
-                <option value='africa'>Africa</option>
-                <option value='america'>America</option>
-                <option value='asia'>Asia</option>
-                <option value='europe'>Europe</option>
-                <option value='oceania'>Oceania</option>
-              </select>
-            </div>
-          </div>
+          <Search />
+          <Filter />
         </div>
-        <div className='home_bottom'>
-          {countries.map((country) => (
-            <Card key={Math.random()} name={country.name} />
-          ))}
-        </div>
+        {pending && !error ? <CircularProgress /> : <CardList />}
+        {error && <Error />}
       </div>
     </div>
   );

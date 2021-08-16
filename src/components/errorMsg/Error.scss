@@ -1,0 +1,16 @@
+.error {
+  width: max-content;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+
+  .icon {
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+
+  span {
+    font-size: 16px;
+  }
+}

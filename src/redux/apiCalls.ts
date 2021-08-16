@@ -6,7 +6,6 @@ export const updateCountries = async (dispatch: any) => {
   try {
     const res = await axios.get('https://restcountries.eu/rest/v2/all');
     dispatch(updateSuccess(res.data));
-    console.log(res.data);
   } catch (err) {
     dispatch(updateFailed());
   }
