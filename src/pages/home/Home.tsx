@@ -3,7 +3,7 @@ import Search from '../../components/search/Search';
 import Filter from '../../components/filter/Filter';
 import Error from '../../components/errorMsg/Error';
 import CardList from '../../components/cardList/CardList';
-import { CircularProgress } from '@material-ui/core';
+
 import { useAppSelector } from '../../redux/hooks';
 import { updateCountries } from '../../redux/apiCalls';
 import { useAppDispatch } from '../../redux/hooks';
@@ -26,7 +26,7 @@ const Home = () => {
           <Search />
           <Filter />
         </div>
-        {pending && !error ? <CircularProgress /> : <CardList />}
+        {pending && !error ? <p>Loading</p> : <CardList />}
         {error && <Error />}
       </div>
     </div>
