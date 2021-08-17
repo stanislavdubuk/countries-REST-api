@@ -15,7 +15,7 @@ const Filter = () => {
   }, [countryFilter, dispatch]);
 
   return (
-    <div className='input'>
+    <div className='input input_filter'>
       <div className='filter'>
         <select
           name='country'

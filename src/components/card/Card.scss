@@ -1,3 +1,5 @@
+@import '../../App.scss';
+
 .card {
   width: 16rem;
   height: 21rem;
@@ -7,6 +9,16 @@
   box-shadow: var(--box-shadow);
   margin-left: 4.6rem;
   margin-bottom: 4.8rem;
+
+  @include tablet {
+    margin-left: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  @include mobile {
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
 
   .card_top {
     height: 48%;

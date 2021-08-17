@@ -20,7 +20,7 @@ const CardList = () => {
   const countries = countriesSearched.length ? countriesSearched : allCountries;
 
   return (
-    <div className='home_bottom'>
+    <div className='card_list'>
       {countries.map((country: countryProps) => (
         <Card key={country.alpha3Code} country={country} />
       ))}

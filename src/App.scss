@@ -11,3 +11,14 @@
   color: var(--l-m-text);
   background-color: var(--l-m-background);
 }
+
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}

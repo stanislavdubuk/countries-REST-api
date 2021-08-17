@@ -1,14 +1,38 @@
+@import '../../App.scss';
+
 .home {
   min-height: 90vh;
   padding: 3.2rem 6rem;
   max-width: 1440px;
   margin: 0 auto;
 
+  @include tablet {
+    padding-top: 2rem;
+    padding-left: 4rem;
+  }
+
+  @include mobile {
+    padding: 1rem;
+    padding-top: 2rem;
+  }
+
   .home_top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 3.2rem;
+
+    @include tablet {
+      margin-bottom: 0rem;
+      margin-left: 2rem;
+      flex-wrap: wrap;
+    }
+
+    @include mobile {
+      display: initial;
+      width: 100%;
+      margin: 0;
+    }
 
     .input {
       height: 3.3rem;
@@ -19,11 +43,19 @@
       box-shadow: var(--box-shadow);
       border-radius: var(--border-radius);
 
+      @include tablet {
+        margin-bottom: 2rem;
+      }
+
       .search {
         width: 29rem;
         display: flex;
         align-items: center;
         padding: 0 2rem;
+
+        @include mobile {
+          width: 100%;
+        }
 
         .icon {
           margin-right: 1.5rem;
@@ -47,7 +79,12 @@
       }
 
       .filter {
-        width: 12rem;
+        width: 6rem;
+
+        @include mobile {
+          width: 10rem;
+          display: initial;
+        }
 
         select {
           color: var(--l-m-text);
@@ -62,6 +99,9 @@
           }
         }
       }
+    }
+    .input_filter {
+      width: 12rem;
     }
   }
 }

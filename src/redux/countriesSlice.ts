@@ -56,6 +56,7 @@ export const countriesSlice = createSlice({
       state.pending = false;
     },
     search: (state, action) => {
+      // eslint-disable-next-line array-callback-return
       state.countriesSearched = state.countries.filter((country) => {
         const query = country.name
           .toLowerCase()
@@ -69,6 +70,7 @@ export const countriesSlice = createSlice({
       });
     },
     filter: (state, action) => {
+      // eslint-disable-next-line array-callback-return
       state.countriesSearched = state.countries.filter((country) => {
         const query = country.region
           .toLowerCase()

@@ -1,9 +1,17 @@
+@import '../../App.scss';
+
 .topbar {
   height: 80px;
   width: 100%;
   background-color: var(--l-m-elements);
   color: var(--l-m-text);
   box-shadow: var(--box-shadow);
+
+  h2 {
+    @include mobile {
+      font-size: 16px;
+    }
+  }
 
   .container {
     padding: 0 6rem;
@@ -13,6 +21,10 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
+
+    @include mobile {
+      padding: 0 1rem;
+    }
 
     .theme_switch {
       cursor: pointer;
@@ -25,10 +37,18 @@
       justify-content: space-between;
       background-color: var(--l-m-elements);
 
+      @include mobile {
+        width: 5.2rem;
+        font-size: 12px;
+      }
+
       .icon {
         transform: rotate(130deg);
-
         font-size: 20px;
+
+        @include mobile {
+          font-size: 16px;
+        }
       }
     }
   }
