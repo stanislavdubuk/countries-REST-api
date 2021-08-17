@@ -1,5 +1,6 @@
 import './Topbar.scss';
 import Brightness2OutlinedIcon from '@material-ui/icons/Brightness2Outlined';
+import Brightness5OutlinedIcon from '@material-ui/icons/Brightness5Outlined';
 import { useState, useEffect } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
 import { toggleTheme } from '../../redux/themeSlice';
@@ -25,8 +26,17 @@ const Topbar = () => {
         </div>
         <div className='right'>
           <button className='theme_switch' onClick={handleThemeToggle}>
-            <Brightness2OutlinedIcon className='icon' />
-            <p>Dark Mode</p>
+            {theme === 'light' ? (
+              <>
+                <Brightness2OutlinedIcon className='icon' />
+                <p>Dark Mode</p>
+              </>
+            ) : (
+              <>
+                <Brightness5OutlinedIcon className='icon' />
+                <p>Light Mode</p>
+              </>
+            )}
           </button>
         </div>
       </div>
