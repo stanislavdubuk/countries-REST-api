@@ -12,7 +12,7 @@
 
     .input {
       height: 3.3rem;
-      background-color: var(--white);
+      background-color: var(--l-m-elements);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -30,9 +30,15 @@
         }
 
         input {
+          color: var(--l-m-text);
           width: 100%;
           height: 2rem;
           border: none;
+          background: none;
+
+          &::placeholder {
+            color: var(--l-m-text);
+          }
 
           &:focus {
             outline: none;
@@ -44,6 +50,7 @@
         width: 12rem;
 
         select {
+          color: var(--l-m-text);
           border-radius: var(--border-radius);
           border: none;
           padding: 1rem;
