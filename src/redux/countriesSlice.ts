@@ -1,12 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 type countryType = {
-  numericCode: number;
+  numericCode: string;
   flag: string;
   name: string;
   population: number;
   region: string;
   capital: string;
+  nativeName: string;
+  subregion: string;
+  topLevelDomain: [];
+  alpha3Code: any;
+  currencies: [
+    {
+      name: string;
+    }
+  ];
+  languages: [
+    {
+      name: string;
+    }
+  ];
+  borders: [];
 }[];
 
 interface CountriesState {

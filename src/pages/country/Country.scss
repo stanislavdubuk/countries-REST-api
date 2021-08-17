@@ -21,6 +21,7 @@
         font-weight: 300;
         color: var(--l-m-text);
         font-size: 16px;
+        cursor: pointer;
 
         .icon {
           transform: rotate(45deg);
@@ -57,13 +58,31 @@
 
         .info {
           display: flex;
-          justify-content: space-between;
+
+          .info_left {
+            min-width: 65%;
+          }
+
+          .info_right {
+            display: flex;
+            flex-direction: column;
+
+            .info_item {
+              display: flex;
+              flex-wrap: wrap;
+            }
+          }
 
           .info_item {
+            display: flex;
             margin-bottom: 0.5rem;
 
             span {
               font-weight: 600;
+              margin-right: 5px;
+            }
+            div {
+              margin-right: 5px;
             }
           }
         }
@@ -88,10 +107,11 @@
               border-radius: var(--border-radius);
               box-shadow: var(--box-shadow);
               width: 6rem;
-              height: 2rem;
+              height: max-content;
               padding: 0.5rem;
               text-align: center;
               background-color: var(--white);
+              cursor: pointer;
             }
           }
         }
