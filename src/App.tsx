@@ -3,7 +3,6 @@ import Home from './pages/home/Home';
 import Country from './pages/country/Country';
 import './App.scss';
 import { useAppSelector } from './redux/hooks';
-
 import {
   BrowserRouter as Router,
   Switch,

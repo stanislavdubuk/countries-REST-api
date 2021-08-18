@@ -4,10 +4,12 @@ import { useAppDispatch } from '../../redux/hooks';
 
 const Filter = () => {
   const [countryFilter, setCountryFilter] = useState<string | number>('');
+  const [isSelected, setIsSelected] = useState(false);
   const dispatch = useAppDispatch();
 
   const onChange = (e: string) => {
     setCountryFilter(e);
+    setIsSelected(true);
   };
 
   useEffect(() => {
@@ -22,7 +24,7 @@ const Filter = () => {
           id='country'
           onChange={(e) => onChange(e.target.value)}
         >
-          <option value='all'>Filter By Region</option>
+          <option value='all'>{isSelected ? 'All' : 'Filter by Region'}</option>
           <option value='africa'>Africa</option>
           <option value='america'>America</option>
           <option value='asia'>Asia</option>
