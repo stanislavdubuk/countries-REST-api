@@ -1,4 +1,4 @@
-import Card from '../../components/card/Card';
+import { Card } from '../Card';
 import './CardList.scss';
 import { useAppSelector } from '../../redux/hooks';
 
