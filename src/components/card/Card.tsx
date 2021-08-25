@@ -1,37 +1,29 @@
-import './Card.scss';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-interface Props {
-  country: {
-    flag: string;
-    name: string;
-    population: number;
-    region: string;
-    capital: string;
-    alpha3Code: string;
-  };
+import { getCardData } from './helpers';
+import { CardProps, CardItemProps } from './types';
+
+import s from './Card.module.scss';
+
+
+const CardItem: FC<CardItemProps> = ({ label, value }) => {
+  return <div><span>{label}</span> {value}</div>
 }
 
-const Card: React.FC<Props> = ({ country }) => {
-  const population = country.population.toLocaleString();
+const Card: FC<CardProps> = ({ country }) => {
+  const data = getCardData(country);
+  const { alpha3Code, flag , name } = country;  
 
   return (
-    <div className='card'>
-      <Link className='link' to={`/country/${country.alpha3Code}`}>
-        <div className='card_top'>
-          <img src={country.flag} alt='flag' />
+    <div className={s.card}>
+      <Link className={s.link} to={`/country/${alpha3Code}`}>
+        <div className={s.card_top}>
+          <img src={flag} alt='flag' />
         </div>
-        <div className='card_bottom'>
-          <h3>{country.name}</h3>
-          <div>
-            <span>Population:</span> {population}
-          </div>
-          <div>
-            <span>Region:</span> {country.region}
-          </div>
-          <div>
-            <span>Capital:</span> {country.capital}
-          </div>
+        <div className={s.card_bottom}>
+          <h3>{name}</h3>
+          {data.map(({ label, value }, index) => <CardItem key={index} label={label} value={value} />)}         
         </div>
       </Link>
     </div>
