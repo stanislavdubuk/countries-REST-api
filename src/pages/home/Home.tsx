@@ -11,10 +11,13 @@ import { useEffect } from 'react';
 
 const Home = () => {
   const dispatch = useAppDispatch();
+  const allCountries = useAppSelector((state) => state.countries.countries);
 
   useEffect(() => {
-    updateCountries(dispatch);
-  }, [dispatch]);
+    if (!allCountries.length) {
+      updateCountries(dispatch);
+    }
+  }, [dispatch, allCountries.length]);
 
   const pending = useAppSelector((state) => state.countries.pending);
   const error = useAppSelector((state) => state.countries.error);
