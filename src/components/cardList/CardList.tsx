@@ -2,15 +2,15 @@ import Card from '../../components/card/Card';
 import './CardList.scss';
 import { useAppSelector } from '../../redux/hooks';
 
-interface countryProps {
-  numericCode: string;
-  flag: string;
-  name: { common: string };
-  population: number;
-  region: string;
-  capital: string;
-  alpha3Code: string;
-}
+// interface countryProps {
+//   numericCode: string;
+//   flag: string;
+//   name: { common: string };
+//   population: number;
+//   region: string;
+//   capital: string;
+//   alpha3Code: string;
+// }
 
 const CardList = () => {
   const allCountries = useAppSelector((state) => state.countries.countries);
@@ -18,7 +18,6 @@ const CardList = () => {
     (state) => state.countries.countriesSearched
   );
   const countries = countriesSearched.length ? countriesSearched : allCountries;
-  console.log(countries);
 
   return (
     <div className='card_list'>
