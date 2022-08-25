@@ -12,12 +12,6 @@ const Country = () => {
     (country) => country.cca3 === params.countryId
   );
 
-  const bordersCodes: any = country?.borders;
-
-  const borders = allCountries.filter((country) =>
-    bordersCodes.includes(country.cca3)
-  );
-
   const population = country?.population.toLocaleString();
 
   return (
@@ -63,38 +57,11 @@ const Country = () => {
                   <div className='info_item'>
                     <span>Top Level Domain:</span>
                     {country?.tld.map((item) => (
-                      <div key={Math.random()}> {item}</div>
+                      <div key={item}> {item}</div>
                     ))}
-                  </div>
-                  <div className='info_item'>
-                    <span>Currencies:</span>
-                    {/* {country?.currencies.map((currency) => (
-                      <div key={Math.random()}> {currency.name}</div>
-                    ))} */}
-                  </div>
-                  <div className='info_item'>
-                    <span>Languages:</span>
-                    {/* {country.languages.map((language) => (
-                      <div key={Math.random()}>{language.name}</div>
-                    ))} */}
                   </div>
                 </div>
               </div>
-              {/* <div className='neighbours'>
-                <span>Border Countries: </span>
-                {borders.length < 1 && <p> None</p>}
-                <div className='neighbours_grid'>
-                  {borders.length > 0 &&
-                    borders?.map((country: any) => (
-                      <Link
-                        key={country.alpha3Code}
-                        to={`/country/${country.alpha3Code}`}
-                      >
-                        <button className='neighbour'>{country.name}</button>
-                      </Link>
-                    ))}
-                </div>
-              </div> */}
             </div>
           </div>
         )}
